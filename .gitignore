@@ -13,3 +13,7 @@ hs_err_pid*
 
 #maven build
 target/
+bin/
+.classpath
+.settings/
+.project

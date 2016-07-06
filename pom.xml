@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>it.larusba.neo4j.jdbc</groupId>
-	<artifactId>jdbc-perf-test</artifactId>
+	<groupId>it.larusba</groupId>
+	<artifactId>neo4j-jdbc-perf-test</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<name>Neo4j JDBC Performance Test</name>
@@ -84,7 +84,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>it.larusba.neo4j.jdbc.Main</mainClass>
+							<mainClass>it.larusba.Main</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

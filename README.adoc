@@ -45,7 +45,7 @@ Specifies which access method should be used between BOLT, HTTP or DRIVER (https
 ==== --db-url <url> (-d) [default: localhost]
 Requires the url to use for database access in the format <host>?user=<username>,password=<password>
 
-==== --threads <n> (-t) [default: 100]
+==== --threads <n> (-n) [default: 100]
 Specifies the total number of threads to run
 
 ==== --time <n> (-t) [default: 10]

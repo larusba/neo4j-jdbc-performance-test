@@ -30,7 +30,7 @@ MATCH (u:User {id:{1}})-[:FRIEND]-(f) RETURN f.id;
 ==== Suggestion (9%)
 [source,java]
 ----
-MATCH (u:User {id:{1}})-[:FRIEND]-(f)-[:FRIEND]-(fof) WHERE NOT (u)-[:FRIEND]-(fof) RETURN fof.id as fof, count(*) as score ORDER BY score DESC LIMIT 10;
+MATCH (u:User {id:{1}})-[:FRIEND]-(f)-[:FRIEND]-(fof) WHERE NOT (u)-[:FRIEND]-(fof)  WITH fof, count(*) as score  ORDER BY score DESC LIMIT 10 RETURN fof.id as fof, score;
 ----
 
 == SETUP

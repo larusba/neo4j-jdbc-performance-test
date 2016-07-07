@@ -32,6 +32,8 @@ public abstract class ExecutorThread implements Runnable
 
   protected float                     averageQueryTime = 0;
 
+  public abstract String getQuery();
+
   protected abstract void executeQuery();
   
   protected abstract void updateStatement();

@@ -126,6 +126,7 @@ public class Main
       int queries = typeList.stream().mapToInt(ExecutorThread::getExecutedQueries).sum();
       long avg = Math.round(typeList.stream().mapToDouble(ExecutorThread::getAverageQueryTime).average().getAsDouble());
       System.out.println("-------------- Details for thread " + type.name() + ":");
+      System.out.println("Cypher statement: " + typeList.get(0).getQuery());
       System.out.println("Number of threads: " + threadsN);
       System.out.println("Queries executed: " + queries);
       System.out.println("Average time per query: " + avg + "ms");
@@ -224,6 +225,7 @@ public class Main
     try
     {
       checkDatabaseEmpty(databaseUrl);
+      createConstraints(databaseUrl);
     }
     catch (RuntimeException e)
     {
@@ -244,6 +246,13 @@ public class Main
     }
   }
 
+  private static void createConstraints(String databaseUrl) throws SQLException, RuntimeException
+  {
+  	Connection c = DriverManager.getConnection(databaseUrl);
+  	Statement stmt = c.createStatement();
+  	stmt.executeQuery("CREATE CONSTRAINT ON (u:User) ASSERT u.id IS UNIQUE");
+  }
+  
   private static void clearDatabase(String databaseUrl) throws SQLException
   {
     Connection c = DriverManager.getConnection(databaseUrl);

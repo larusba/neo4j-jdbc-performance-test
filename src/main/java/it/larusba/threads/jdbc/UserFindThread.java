@@ -55,4 +55,10 @@ public class UserFindThread extends QueryExecutorThread
       throw new RuntimeException(e);
     }
   }
+  
+  @Override
+  public String getQuery()
+  {
+    return QUERY;
+  }
 }

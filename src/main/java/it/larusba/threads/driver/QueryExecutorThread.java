@@ -50,6 +50,4 @@ public abstract class QueryExecutorThread extends ExecutorThread
     StatementResult result = session.run(getQuery(), parameters);
     result.consume();
   }
-
-  protected abstract String getQuery();
 }

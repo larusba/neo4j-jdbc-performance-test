@@ -44,7 +44,7 @@ public class UserFriendFindThread extends QueryExecutorThread
   }
 
   @Override
-  protected String getQuery()
+  public String getQuery()
   {
     return QUERY;
   }

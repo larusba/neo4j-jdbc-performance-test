@@ -29,7 +29,7 @@ import java.sql.SQLException;
 
 public class UserFriendSuggestionThread extends QueryExecutorThread
 {
-  private final static String QUERY = "MATCH (u:User {id:{1}})-[:FRIEND]-(f)-[:FRIEND]-(fof) WHERE NOT (u)-[:FRIEND]-(fof) RETURN fof.id as fof, count(*) as score ORDER BY score DESC LIMIT 10;";
+  private final static String QUERY = "MATCH (u:User {id:{1}})-[:FRIEND]-(f)-[:FRIEND]-(fof) WHERE NOT (u)-[:FRIEND]-(fof)  WITH fof, count(*) as score  ORDER BY score DESC LIMIT 10 RETURN fof.id as fof, score;";
 
   public UserFriendSuggestionThread(String databaseUrl) throws SQLException
   {
@@ -55,5 +55,11 @@ public class UserFriendSuggestionThread extends QueryExecutorThread
     {
       throw new RuntimeException(e);
     }
+  }
+  
+  @Override
+  public String getQuery()
+  {
+    return QUERY;
   }
 }

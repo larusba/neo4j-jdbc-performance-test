@@ -29,8 +29,8 @@ import org.neo4j.driver.v1.AuthToken;
 
 public class UserFriendSuggestionThread extends QueryExecutorThread
 {
-  private final static String QUERY = "MATCH (u:User {id:{1}})-[:FRIEND]-(f)-[:FRIEND]-(fof) WHERE NOT (u)-[:FRIEND]-(fof) RETURN fof.id as fof, count(*) as score ORDER BY score DESC LIMIT 10;";
-
+  private final static String QUERY = "MATCH (u:User {id:{1}})-[:FRIEND]-(f)-[:FRIEND]-(fof) WHERE NOT (u)-[:FRIEND]-(fof)  WITH fof, count(*) as score  ORDER BY score DESC LIMIT 10 RETURN fof.id as fof, score;";
+  
   public UserFriendSuggestionThread(String databaseUrl, AuthToken auth) throws SQLException
   {
     super(databaseUrl, auth);
@@ -44,7 +44,7 @@ public class UserFriendSuggestionThread extends QueryExecutorThread
   }
 
   @Override
-  protected String getQuery()
+  public String getQuery()
   {
     return QUERY;
   }

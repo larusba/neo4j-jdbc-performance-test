@@ -47,7 +47,7 @@ public class UserCreateThread extends QueryExecutorThread
   }
 
   @Override
-  protected String getQuery()
+  public String getQuery()
   {
     return QUERY;
   }
